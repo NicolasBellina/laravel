@@ -11,18 +11,16 @@ class CreateTenantsTable extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasTable('properties')) {
-            Schema::create('properties', function (Blueprint $table) {
-                $table->id();
-                $table->string('title');
-                $table->text('description');
-                $table->decimal('price', 10, 2);
-                $table->string('address');
-                $table->integer('bedrooms');
-                $table->integer('bathrooms');
-                $table->timestamps();
-            });
-        }
+        Schema::create('tenants', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('property_id')->constrained('properties')->onDelete('cascade'); // Ajout de la colonne property_id
+            $table->string('name');
+            $table->string('phone');
+            $table->string('email')->unique();
+            $table->string('address');
+            $table->string('bank_account');
+            $table->timestamps();
+        });
     }
 
     /**

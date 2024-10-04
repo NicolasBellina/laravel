@@ -16,10 +16,5 @@ class Property extends Model
         'address',
         'area_m2',
         'volume_m3',
-        'bedrooms',
-        'bathrooms',
-
-
-       
     ];
 }

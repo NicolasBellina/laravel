@@ -36,8 +36,7 @@ class PropertyController extends Controller
             'address' => 'required',
             'area_m2' => 'required|numeric',
             'volume_m3' => 'required|numeric',
-            'bedrooms' => 'required|integer', // Ajoutez cette ligne
-            'bathrooms' => 'required|integer', // Ajoutez cette ligne
+      
         ]);
 
         Property::create($validated);

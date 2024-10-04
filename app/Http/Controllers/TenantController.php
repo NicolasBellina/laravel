@@ -31,9 +31,13 @@ class TenantController extends Controller
             'bank_account' => 'required|max:255',
         ]);
 
-        Tenant::create($validated);
-
-        return redirect()->route('tenants.index')->with('success', 'Locataire créé avec succès.');
+        try {
+            Tenant::create($validated);
+            return redirect()->route('tenants.index')->with('success', 'Locataire créé avec succès.');
+        } catch (\Exception $e) {
+            // Affiche l'erreur réelle
+            return redirect()->back()->withErrors(['error' => 'Erreur lors de la création du locataire : ' . $e->getMessage()]);
+        }
     }
 
     public function edit(Tenant $tenant)
@@ -53,14 +57,26 @@ class TenantController extends Controller
             'bank_account' => 'required|max:255',
         ]);
 
-        $tenant->update($validated);
-
-        return redirect()->route('tenants.index')->with('success', 'Locataire mis à jour avec succès.');
+        try {
+            $tenant->update($validated);
+            return redirect()->route('tenants.index')->with('success', 'Locataire mis à jour avec succès.');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'Erreur lors de la mise à jour du locataire.']);
+        }
     }
 
     public function destroy(Tenant $tenant)
     {
-        $tenant->delete();
-        return redirect()->route('tenants.index')->with('success', 'Locataire supprimé avec succès.');
+        try {
+            $tenant->delete();
+            return redirect()->route('tenants.index')->with('success', 'Locataire supprimé avec succès.');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'Erreur lors de la suppression du locataire.']);
+        }
+    }
+
+    public function show(Tenant $tenant)
+    {
+        return view('tenants.show', compact('tenant'));
     }
 }

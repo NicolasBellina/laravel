@@ -19,9 +19,6 @@ class CreatePropertiesTable extends Migration
             $table->string('address');
             $table->decimal('area_m2', 10, 2)->nullable(); // Ajout de la colonne pour les m²
             $table->decimal('volume_m3', 10, 2)->nullable(); // Ajout de la colonne pour les m³
-            $table->integer('bedrooms')->default(0); // Ajout de la colonne pour le nombre de chambres
-            $table->integer('bathrooms')->default(0); // Ajout de la colonne pour le nombre de salles de bain
-
             $table->timestamps();
         });
     }

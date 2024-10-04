@@ -1,10 +1,12 @@
 <x-app-layout>
-    <div class="container mx-auto px-4 py-8">
-        <div class="flex justify-between items-center mb-6">
-            <h1 class="text-3xl font-bold">Liste des boxs</h1>
-            <a href="{{ route('properties.create') }}" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg">
-                Ajouter un box
-            </a>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200">
+                    <h1 class="text-2xl font-bold mb-4">Liste des boxes</h1>
+                    <a href="{{ route('properties.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mb-4">
+                        Ajouter un boxe
+                    </a>
         </div>
         <table class="min-w-full bg-white">
             <thead>
@@ -13,8 +15,6 @@
                     <th class="py-2 px-4 border-b">Prix</th>
                     <th class="py-2 px-4 border-b">Superficie (m²)</th>
                     <th class="py-2 px-4 border-b">Volume (m³)</th>
-                    <th class="py-2 px-4 border-b">Nombre de chambres</th>
-                    <th class="py-2 px-4 border-b">Nombre de salles de bain</th>
                     <th class="py-2 px-4 border-b">Actions</th>
                 </tr>
             </thead>
@@ -30,8 +30,7 @@
                             <td class="py-2 px-4 border-b">{{ $property->price }} €</td>
                             <td class="py-2 px-4 border-b">{{ $property->area_m2 }} m²</td>
                             <td class="py-2 px-4 border-b">{{ $property->volume_m3 }} m³</td>
-                            <td class="py-2 px-4 border-b">{{ $property->bedrooms }}</td>
-                            <td class="py-2 px-4 border-b">{{ $property->bathrooms }}</td>
+                            
                             <td class="py-2 px-4 border-b">
                                 <a href="{{ route('properties.edit', $property) }}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg mr-2 text-sm">
                                     <i class="fas fa-edit mr-1"></i>Modifier

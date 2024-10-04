@@ -18,12 +18,12 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // Routes pour les propriétés
     Route::resource('properties', PropertyController::class);
 
-    // Routes pour les locataires
     Route::resource('tenants', TenantController::class);
 
 });
+
+Route::get('tenants/{tenant}', [TenantController::class, 'show'])->name('tenants.show');
 
 require __DIR__.'/auth.php';
