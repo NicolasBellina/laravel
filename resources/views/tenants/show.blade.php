@@ -8,7 +8,7 @@
                 <p><strong>Email:</strong> {{ $tenant->email }}</p>
                 <p><strong>Adresse:</strong> {{ $tenant->address }}</p>
                 <p><strong>Compte bancaire:</strong> {{ $tenant->bank_account }}</p>
-                <p><strong>Propriété:</strong> {{ $tenant->property->title }}</p> <!-- Assurez-vous que la relation est définie -->
+                <p><strong>Propriété:</strong> {{ $tenant->property->title }}</p>
                 <a href="{{ route('tenants.index') }}" class="mt-4 inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">Retour à la liste</a>
             </div>
         </div>
