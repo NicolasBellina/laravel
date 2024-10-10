@@ -17,4 +17,4 @@ Route::resource('tenants', TenantController::class);
 
 Route::get('tenants/{tenant}', [TenantController::class, 'show'])->name('tenants.show');
 
-require __DIR__.'/auth.php';
+require __DIR__.'/auth.php'; 
